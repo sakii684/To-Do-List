@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+		}
+
+		h1 {
+			margin-bottom: 20px;
+			color: #333;
+		}
+
+		div {
+			margin-bottom: 20px;
+		}
+
+		input {
+			padding: 10px;
+			font-size: 16px;
+			border: 2px solid #ccc;
+			border-radius: 5px;
+			outline: none;
+			transition: border-color 0.3s ease;
+		}
+
+		input:focus {
+			border-color: #007BFF;
+		}
+
+		button {
+			padding: 10px 15px;
+			font-size: 16px;
+			background-color: #007BFF;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease, transform 0.2s ease;
+		}
+
+		button:hover {
+			background-color: #0056b3;
+			transform: scale(1.05);
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0;
+			width: 300px;
+		}
+
+		li {
+			padding: 10px;
+			font-size: 16px;
+			background: #fff;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			animation: fadeIn 0.5s ease;
+		}
+
+		li button {
+			background-color: #dc3545;
+		}
+
+		li button:hover {
+			background-color: #b21f2d;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+				transform: translateY(-10px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes fadeOut {
+			from {
+				opacity: 1;
+				transform: translateX(0);
+			}
+			to {
+				opacity: 0;
+				transform: translateX(50px);
+			}
+		}
+</style>
+<body>
+	<h1>To-Do List</h1>
+	
+	<div>
+		<label for="item" =>Enter new item:</label>
+		<input type="text" name="item" id="item">
+		<button>Add item</button>
+	</div>
+	<ul>
+	
+	</ul>
+	<script type="text/javascript">
+		const btn = document.querySelector("button");
+		const list = document.querySelector("ul");
+		const input = document.querySelector("#item");
+
+		btn.addEventListener("click", () =>{
+			let store = input.value;
+			input.value = " ";
+
+			const listItem = document.createElement("li");
+			const span = document.createElement("span");
+			const deleteButton = document.createElement("button");
+
+			listItem.textContent = store;
+			listItem.appendChild(span)
+
+			
+			span.textContent= input.value;
+			span.appendChild(deleteButton);
+
+			
+			deleteButton.textContent = "Delete";
+			list.appendChild(listItem);
+ 			
+ 			deleteButton.addEventListener("click", () =>{
+ 				listItem.remove();
+
+ 			});
+
+ 			input.focus();
+		})
+	</script>
+</body>
+</html>
